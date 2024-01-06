@@ -470,7 +470,7 @@ const ManageAppointments = () => {
                         style={{
                           padding: 10,
                           marginLeft: "10px",
-                          minHeight: appointmentActions[index] ? '55px' : '75px',
+                          minHeight: appointmentActions[index] ? '60px' : '75px',
                           maxHeight: appointmentActions[index] ? '65px' : '100px',
                           width: "210px",
                           borderRadius: '5px',
