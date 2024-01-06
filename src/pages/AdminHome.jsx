@@ -454,8 +454,8 @@ function AdminHome() {
         <Popup trigger={isDeleteAccountVisible}>
           <div style={{ textAlign: "center", marginBottom: "10px", fontSize: "20px", zIndex: -1 }}><b>Are you sure you want to delete your account?</b></div>
 
-          <button onClick={handleDeleteUser} style={{ padding: 5, borderRadius: 0, width: "48.5%", textAlign: "center", marginTop: "10px", height: "40px", marginRight: "10px", backgroundColor: "#b22222" }} >Delete Account</button>
-          <button className='cancel' onClick={closeDeleteAccount} style={{ padding: 5, borderRadius: 0, width: "48.5%", textAlign: "center", marginTop: "10px", height: "40px" }}>Cancel</button>
+          <button onClick={handleDeleteUser} style={{ padding: 5, borderRadius: 10, width: "48.5%", textAlign: "center", marginTop: "10px", height: "40px", marginRight: "10px", backgroundColor: "#b22222" }} >Delete Account</button>
+          <button className='cancel' onClick={closeDeleteAccount} style={{ padding: 5, borderRadius: 10, width: "48.5%", textAlign: "center", marginTop: "10px", height: "40px" }}>Cancel</button>
         </Popup>
       )}
       <form action="#" id="signin-form">
