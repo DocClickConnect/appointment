@@ -416,7 +416,7 @@ const ManageAppointments = () => {
                         paddingTop: '5px',
                         paddingBottom: '5px',
                         paddingLeft: '10px',
-                        borderStyle: 'dashed',
+                        borderStyle: 'solid',
                         borderWidth: '2px',
                         borderRadius: '5px',
                         borderColor: getBorderColor(appointment.appointmentStatus),
