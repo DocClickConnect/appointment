@@ -72,7 +72,7 @@ const PatientCards = ({ patient, onReview }) => {
           </div>
         </div>
         <div>
-          <button style={{padding: 5, borderRadius: 0, width: "340px", alignItems: "center", marginLeft: "2%"}} onClick={() => onReview(patient.patientId)}>Review Details</button>
+          <button style={{padding: 5, borderRadius: 0, width: "340px", alignItems: "center", marginLeft: "2%", borderRadius: "5px"}} onClick={() => onReview(patient.patientId)}>Review Details</button>
         </div>
       </div>
     </div>
