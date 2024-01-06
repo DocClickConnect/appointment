@@ -393,7 +393,7 @@ const PatientResched = () => {
                       rowSpan={2}
                       width={200}
                       style={{
-                        border: '3px dashed',
+                        border: '2px solid',
                         borderRadius: '10px', 
                         borderColor: getBorderColor(latestAppointment.appointmentStatus),
                         backgroundColor: getBackgroundColor(latestAppointment.appointmentStatus),
