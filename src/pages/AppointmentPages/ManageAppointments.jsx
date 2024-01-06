@@ -46,7 +46,7 @@ const ManageAppointments = () => {
     locales
   })
 
-   const getBackgroundColor = (status) => {
+  const getBackgroundColor = (status) => {
     switch (status) {
       case 'Cancelled':
         return '#FCA694';
@@ -121,6 +121,7 @@ const ManageAppointments = () => {
     );
   };
 
+
   useEffect(() => {
     fetch(`https://railway-backend-production-a8c8.up.railway.app/appointments?patientUserId=${patientUserId}`)
       .then((appointmentsResponse) => {
@@ -187,7 +188,19 @@ const ManageAppointments = () => {
         window.alert('Appointment is already completed. It cannot be cancelled');
         return;
       }
+      const currentDateTime = new Date();
+      const appointmentStartTime = appointmentToCancel.start;
 
+      // Calculate the difference in milliseconds
+      const timeDifference = appointmentStartTime - currentDateTime;
+
+      // Define the duration of 24 hours in milliseconds
+      const twentyFourHoursInMilliseconds = 24 * 60 * 60 * 1000;
+
+      if (timeDifference < twentyFourHoursInMilliseconds) {
+        window.alert('The appointment cannot be cancelled 24 hours before the appointment.');
+        return;
+      }
       // Check if the appointment is already cancelled
       if (appointmentToCancel.appointmentStatus === 'Cancelled') {
         // Display error message as a pop-up
@@ -228,6 +241,20 @@ const ManageAppointments = () => {
         window.alert('Appointment is already completed. It cannot be rescheduled.');
         return;
       }
+      const currentDateTime = new Date();
+      const appointmentStartTime = appointmentToCancel.start;
+
+      // Calculate the difference in milliseconds
+      const timeDifference = appointmentStartTime - currentDateTime;
+
+      // Define the duration of 24 hours in milliseconds
+      const twentyFourHoursInMilliseconds = 24 * 60 * 60 * 1000;
+
+      if (timeDifference < twentyFourHoursInMilliseconds) {
+        window.alert('The appointment cannot be rescheduled 24 hours before the appointment.');
+        return;
+      }
+      
 
       if (appointmentToCancel.appointmentStatus === 'Cancelled') {
         window.alert('Appointment is already cancelled. It cannot be rescheduled.');
@@ -302,8 +329,18 @@ const ManageAppointments = () => {
         console.error('Appointment not found');
         return;
       }
+
       if (appointmentToCancel.appointmentStatus === 'Completed') {
         window.alert('Appointment is already completed');
+        return;
+      }
+
+      const currentDateTime = new Date();
+
+  
+      
+      if (currentDateTime < appointmentToCancel.end) {
+        window.alert('The appointment cannot be set as completed.');
         return;
       }
 
@@ -312,7 +349,6 @@ const ManageAppointments = () => {
       });
 
       if (response.ok) {
-        window.location.reload();
       } else {
         console.error('Error marking appointment as completed');
       }
@@ -401,7 +437,7 @@ const ManageAppointments = () => {
             </tr>
           </table>
 
-          <div style={{ overflowY: 'auto', maxHeight: '620px', width: "450px", marginRight: "-100px", overflowX: “hidden" }}>
+          <div style={{ overflowY: 'auto', maxHeight: '620px', width: "450px", marginRight: "-100px", overflowX: "hidden" }}>
             {appointments
               .filter(appointment => appointment.doctorUsername === username && appointment.deletionStatus !== "Deleted")
               .map((appointment, index) => (
