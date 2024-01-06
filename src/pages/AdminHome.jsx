@@ -458,10 +458,12 @@ function AdminHome() {
           <button className='cancel' onClick={closeDeleteAccount} style={{ padding: 5, borderRadius: 10, width: "48.5%", textAlign: "center", marginTop: "10px", height: "40px" }}>Cancel</button>
         </Popup>
       )}
+     
       <form action="#" id="signin-form">
-        <div>
-          <h1 style={{ float: "left", marginRight: "225px" }}>Doctor Details</h1>
-          <h1 style={{ float: "right", fontSize: "25px", color: "gray", cursor: "pointer" }} onClick={closePopup}>x</h1>
+        <div style={{display: "flex", flexDirection: "row"}}>
+          <h1 style={{}}>Doctor Details</h1>
+          <h1 style={{  fontSize: "25px", color: "gray", cursor: "pointer", marginLeft: "9vw"  }} onClick={closePopup}>x</h1>
+
         </div>
         <div className="infield" style={{ overflowY: 'auto', overflowX: 'hidden', maxHeight: '500px' }}>
           <div style={{ display: "flex", flexDirection: "row", alignItems: "center" }}>
@@ -469,7 +471,7 @@ function AdminHome() {
               <img
                 src={selectedAvatar}
                 alt="Selected Avatar"
-                style={{ width: "120px", marginRight: "20px" }}
+                style={{ width: "7vw", marginRight: ".5rem" }}
               />
             )}
 
@@ -480,7 +482,7 @@ function AdminHome() {
                   type="text"
                   name="docName"
                   placeholder="Doctor Name"
-                  style={{ width: "16vw", marginBottom: "0px", borderRadius: "10px" }}
+                  style={{ width: "16.2vw", marginBottom: "0px", borderRadius: "10px" }}
                   value={`${currentDoctor.firstName} ${currentDoctor.lastName}`}
                   readOnly
                 />
@@ -492,7 +494,7 @@ function AdminHome() {
                   type="text"
                   name="prcId"
                   placeholder="PRC ID"
-                  style={{ width: "16vw", marginBottom: "0px", borderRadius: "10px" }}
+                  style={{ width: "16.2vw", marginBottom: "0px", borderRadius: "10px" }}
                   value={currentDoctor.prcId}
                   readOnly
                 />
@@ -502,26 +504,26 @@ function AdminHome() {
 
           <div style={{ display: "flex", flexDirection: "column", marginTop: "10px" }}>
             <div style={{ display: "flex", flexDirection: "row" }}>
-              <div style={{ display: "flex", flexDirection: "column", marginRight: "20px" }}>
+              <div style={{ display: "flex", flexDirection: "column", marginRight: "1rem" }}>
                 <h3>Doctor Credentials</h3>
-                <input type="text" name="credentials" placeholder="Doctor Credentials" style={{ width: "11vw", borderRadius: "10px" }} value={currentDoctor.credentials} readOnly></input>
+                <input type="text" name="credentials" placeholder="Doctor Credentials" style={{ width: "11.2vw", borderRadius: "10px" }} value={currentDoctor.credentials} readOnly></input>
               </div>
               <div style={{ display: "flex", flexDirection: "column" }}>
                 <h3>Specialization</h3>
-                <input type="text" name="specialization" placeholder="Specialization" style={{ width: "11vw", borderRadius: "10px" }} value={currentDoctor.specialization} readOnly></input>
+                <input type="text" name="specialization" placeholder="Specialization" style={{ width: "11.2vw", borderRadius: "10px" }} value={currentDoctor.specialization} readOnly></input>
               </div>
             </div>
           </div>
 
           <div style={{ display: "flex", flexDirection: "column", marginTop: "10px" }}>
             <div style={{ display: "flex", flexDirection: "row" }}>
-              <div style={{ display: "flex", flexDirection: "column", marginRight: "20px" }}>
+              <div style={{ display: "flex", flexDirection: "column", marginRight: "1rem" }}>
                 <h3>Email Address</h3>
-                <input type="text" name="emailAddress" placeholder="Email Address" style={{ width: "11vw", borderRadius: "10px" }} value={currentDoctor.email} readOnly></input>
+                <input type="text" name="emailAddress" placeholder="Email Address" style={{ width: "11.2vw", borderRadius: "10px" }} value={currentDoctor.email} readOnly></input>
               </div>
               <div style={{ display: "flex", flexDirection: "column" }}>
                 <h3>Contact Number</h3>
-                <input type="text" name="contactNumber" placeholder="Contact Number" style={{ width: "11vw", borderRadius: "10px" }} value={currentDoctor.contactNumber} readOnly></input>
+                <input type="text" name="contactNumber" placeholder="Contact Number" style={{ width: "11.2vw", borderRadius: "10px" }} value={currentDoctor.contactNumber} readOnly></input>
               </div>
             </div>
           </div>
@@ -540,7 +542,7 @@ function AdminHome() {
                   placeholder="Clinic or Hospital Affiliation"
                   value={clinic.clinicName}
                   readOnly
-                  style={{ width: "23vw", borderRadius: "10px" }}
+                  style={{ width: "23.5vw", borderRadius: "10px" }}
                 ></input>
               </div>
               <div>
@@ -551,7 +553,7 @@ function AdminHome() {
                   placeholder="Clinic Schedule"
                   value={clinic.clinicAddress}
                   readOnly
-                  style={{ width: "23vw", borderRadius: "10px" }}
+                  style={{ width: "23.5vw", borderRadius: "10px" }}
                 ></input>
               </div>
               <div>
@@ -562,7 +564,7 @@ function AdminHome() {
                   placeholder="Clinic Schedule"
                   value={clinic.scheduleDays}
                   readOnly
-                  style={{ width: "23vw", borderRadius: "10px" }}
+                  style={{ width: "23.5vw", borderRadius: "10px" }}
 
                 ></input>
               </div>
@@ -576,11 +578,11 @@ function AdminHome() {
               style={{
                 padding: 5,
                 borderRadius: 0,
-                width: "23vw", 
+                width: "23.5vw", 
                 textAlign: "center",
                 marginTop: "10px",
                 height: "40px",
-                marginRight: "10px",
+                marginRight: "",
                 backgroundColor: "#b22222",
                 borderRadius: "10px" 
               }}
@@ -593,7 +595,7 @@ function AdminHome() {
                 type='button'
                 style={{
                   padding: 5,
-                  borderRadius: 0,
+                  borderRadius: 10,
                   width: "48.8%", // Adjust width as needed
                   textAlign: "center",
                   marginTop: "20px",
@@ -615,7 +617,7 @@ function AdminHome() {
                 className='cancel'
                 style={{
                   padding: 5,
-                  borderRadius: 0,
+                  borderRadius: 10,
                   width: "48.9%", // Adjust width as needed
                   textAlign: "center",
                   marginTop: "20px",
@@ -652,18 +654,21 @@ function AdminHome() {
           <button className='cancel' onClick={closeDeleteAccount} style={{ padding: 5, borderRadius: 10, width: "48.5%", textAlign: "center", marginTop: "10px", height: "40px" }}>Cancel</button>
         </Popup>
       )}
-      <form action="#" id="signin-form">
-        <div>
-          <h1 style={{ float: "left", marginRight: "200px" }}>Patient Details</h1>
-          <h1 style={{ float: "right", fontSize: "25px", color: "gray", cursor: "pointer" }} onClick={closePopup}>x</h1>
-        </div>
+    <form action="#" id="signin-form">
+      <div style={{ display: "flex", flexDirection: "row", justifyContent: 'space-between', alignItems: 'center' }}>
+        <h1 style={{}}>Patient Details</h1>
+        <h1 style={{ fontSize: "25px", color: "gray", cursor: "pointer", marginLeft: "9vw" }} onClick={closePopup}>x</h1>
+      </div>
+
+
+
         <div className="infield" style={{ overflowY: 'auto', maxHeight: '500px', overflowX: "hidden" }}>
           <div style={{ display: "flex", flexDirection: "row", alignItems: "center" }}>
             {selectedAvatar && (
               <img
                 src={selectedAvatar}
                 alt="Selected Avatar"
-                style={{ float: "left", marginRight: "5%", width: "120px" }}
+                style={{ float: "left", marginRight: "0.5rem", width: "7vw" }}
               />
             )}
             <div style={{ display: "flex", flexDirection: "column" }}>
@@ -813,9 +818,9 @@ function AdminHome() {
         </div>
 
 
-        <div className="doctor-grid" style={{ marginLeft: "7%", marginRight: "3%" }}>
+        <div className="doctor-grid" style={{display: "flex", justifyContent: 'center', paddingLeft: "10rem", paddingRight: "10rem"}}>
           {selectedProfile === 'doctors' ? (
-            <div className="doctor-grid" style={{ marginRight: "3.5%" }}>
+            <div className="doctor-grid" style={{}}>
               <div >
                 <div className="verified-accounts">
                   <h2>Verified Accounts</h2>
