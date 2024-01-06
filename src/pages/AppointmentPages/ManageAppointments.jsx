@@ -401,7 +401,7 @@ const ManageAppointments = () => {
             </tr>
           </table>
 
-          <div style={{ overflowY: 'auto', maxHeight: '650px', width: "450px", marginRight: "-100px" }}>
+          <div style={{ overflowY: 'auto', maxHeight: '620px', width: "450px", marginRight: "-100px", overflowX: “hidden" }}>
             {appointments
               .filter(appointment => appointment.doctorUsername === username && appointment.deletionStatus !== "Deleted")
               .map((appointment, index) => (
