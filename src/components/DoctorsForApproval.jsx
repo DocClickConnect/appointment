@@ -65,7 +65,7 @@ const DoctorForApproval = ({ doctor, onReview }) => {
           </div>
         </div>
         <div>
-          <button style={{padding: 5, borderRadius: 0, width: "340px", alignItems: "center", marginLeft: "2%"}} onClick={() => onReview(doctor.doctorId)}>Review Details</button>
+          <button style={{padding: 5, borderRadius: 0, width: "340px", alignItems: "center", marginLeft: "2%", borderRadius: "5px"}} onClick={() => onReview(doctor.doctorId)}>Review Details</button>
         </div>
       </div>
     </div>
