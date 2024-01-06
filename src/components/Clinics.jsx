@@ -13,7 +13,7 @@ const ClinicCard = ({ clinic, onEdit }) => {
 
   const handleDeleteClinic = async () => {
     try {
-      const response = await fetch(`http://railway-backend-production-a8c8.up.railway.app/clinic/${clinic.clinicId}`, {
+      const response = await fetch(`https://railway-backend-production-a8c8.up.railway.app/clinic/${clinic.clinicId}`, {
         method: 'DELETE',
         headers: {
           'Content-Type': 'application/json',
@@ -37,7 +37,7 @@ const ClinicCard = ({ clinic, onEdit }) => {
 
   return (
 
-    <div className="doctor-card" style={{ maxHeight: "200px" }}>
+    <div className="doctor-card" style={{ maxHeight: "200px", display: "flex", flexDirection: "column", alignItems: "center"  }}>
       {isDeleteAccountVisible && (
         <Popup trigger={isDeleteAccountVisible}>
           <div style={{ textAlign: "center", marginBottom: "10px", fontSize: "20px" }}><b>Are you sure you want to delete this clinic?</b></div>
@@ -47,7 +47,7 @@ const ClinicCard = ({ clinic, onEdit }) => {
       )}
       <div className="doctor-info">
 
-        <div className="dinfo" style={{ height: "160px" }}>
+        <div className="dinfo" style={{ height: "150px"}}>
           <h2 style={{ lineHeight: 1, padding: '5px 10px', justifyContent: 'center', textAlign: "center" }}>{clinic.name}</h2>
           <p style={{ margin: 0, marginLeft: '6px' }}>Address: {clinic.address}</p>
           <p style={{ margin: 0, marginLeft: '6px' }}>Number: {clinic.officeNumber}</p>
@@ -55,8 +55,8 @@ const ClinicCard = ({ clinic, onEdit }) => {
           <p style={{ margin: 0, marginLeft: '6px' }}>Hospital Affiliation: {clinic.hospital}</p>
         </div>
         <div style={{ marginBottom: 0 }}>
-          <button style={{ marginTop: "5px", padding: 5, borderRadius: 0, width: "128px", marginRight: "10px" }} className="clinic-button" onClick={() => onEdit(clinic)}>Edit</button>
-          <button style={{ marginTop: "5px", padding: 5, borderRadius: 0, width: "128px", bottom: 0, backgroundColor: "#b22222" }} className="cancel" onClick={handleDeletePopup}>Delete</button>
+          <button style={{ padding: 5, borderRadius: 0, width: "128px", marginRight: "10px", borderRadius: "5px" }} className="clinic-button" onClick={() => onEdit(clinic)}>Edit</button>
+          <button style={{ padding: 5, borderRadius: 0, width: "128px", bottom: 0, backgroundColor: "#b22222", borderRadius: "5px"  }} className="cancel" onClick={handleDeletePopup}>Delete</button>
         </div>
       </div>
     </div>
