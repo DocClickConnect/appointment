@@ -47,6 +47,7 @@ function AdminHome() {
   const [reject] = useState('Rejected by Admin')
   const [selectedAvatar, setSelectedAvatar] = useState('');
   const [isPopupVisible, setPopupVisibility] = useState(false);
+  const [isDeleteAccountVisible, setIsDeleteAccountVisible] = useState(false);
   const [doctors, setDoctors] = useState([
     {
       doctorId: '',
@@ -62,22 +63,22 @@ function AdminHome() {
       deletionStatus: ''
     }]);
 
-    const [patients, setPatients] = useState([
-      {
-        patientId: '',
-        firstName: '',
-        lastName: '',
-        contactNumber: '',
-        birthday: '',
-        sex: '',
-        email: '',
-        philhealthId: '',
-        seniorId: '',
-        hmo: '',
-        pwdId: '',
-        profilePicture: '',
-        deletionStatus: ''
-      }]);
+  const [patients, setPatients] = useState([
+    {
+      patientId: '',
+      firstName: '',
+      lastName: '',
+      contactNumber: '',
+      birthday: '',
+      sex: '',
+      email: '',
+      philhealthId: '',
+      seniorId: '',
+      hmo: '',
+      pwdId: '',
+      profilePicture: '',
+      deletionStatus: ''
+    }]);
 
   const [result, setResult] = useState('');
   const [isLoading, setIsLoading] = useState(true);
@@ -97,17 +98,25 @@ function AdminHome() {
   const [isAdminLoggedIn, setIsAdminLoggedIn] = useState('')
   const [selectedProfile, setSelectedProfile] = useState('doctors'); // Default selected profile
 
+  const handleDeleteAccount = () => {
+    setIsDeleteAccountVisible(true);
+  };
+
+  const closeDeleteAccount = () => {
+    setIsDeleteAccountVisible(false);
+  };
+
   const handleProfileToggle = (profileType) => {
     setSelectedProfile(profileType);
     if (profileType === "patients") {
       fetchAllPatients(); // Assuming fetchAllPatients is a function you've defined
     }
   };
-  
+
   useEffect(() => {
     const fetchLoggedInAdmin = async () => {
       try {
-        const response = await fetch(`http://localhost:8080/admindetails/${username}`);
+        const response = await fetch(`https://railway-backend-production-a8c8.up.railway.app/admindetails/${username}`);
         if (response.ok) {
           setIsAdminLoggedIn(true);
         } else {
@@ -124,7 +133,7 @@ function AdminHome() {
   useEffect(() => {
     const fetchSchedules = async () => {
       try {
-        const response = await fetch('http://localhost:8080/schedules');
+        const response = await fetch('https://railway-backend-production-a8c8.up.railway.app/schedules');
 
         if (!response.ok) {
           throw new Error('Failed to fetch schedules');
@@ -154,7 +163,7 @@ function AdminHome() {
   useEffect(() => {
     const fetchAllDoctors = async () => {
       try {
-        const response = await fetch('http://localhost:8080/allusers');
+        const response = await fetch('https://railway-backend-production-a8c8.up.railway.app/allusers');
 
         if (response.ok) {
           const data = await response.json();
@@ -187,7 +196,7 @@ function AdminHome() {
 
   const fetchAllPatients = async () => {
     try {
-      const response = await fetch('http://localhost:8080/allpatients');
+      const response = await fetch('https://railway-backend-production-a8c8.up.railway.app/allpatients');
 
       if (response.ok) {
         const data = await response.json();
@@ -250,7 +259,7 @@ function AdminHome() {
       'patavatar15': patavatar15,
       'patavatar16': patavatar16,
       'patavatar17': patavatar17,
-      'patavatar18' : patavatar18
+      'patavatar18': patavatar18
     };
 
     // Set selectedAvatar using the corresponding import
@@ -302,7 +311,7 @@ function AdminHome() {
 
   const handleLogout = async () => {
     try {
-      const response = await fetch(`http://localhost:8080/adminlogout/${username}`, {
+      const response = await fetch(`https://railway-backend-production-a8c8.up.railway.app/adminlogout/${username}`, {
         method: 'POST',
       });
 
@@ -321,7 +330,7 @@ function AdminHome() {
 
   const handleApprovalSubmit = async (doctorId) => {
     try {
-      const url = `http://localhost:8080/approval?userId=${doctorId}&approvalStatus=${approved}`;
+      const url = `https://railway-backend-production-a8c8.up.railway.app/approval?userId=${doctorId}&approvalStatus=${approved}`;
       const response = await fetch(url, {
         method: 'POST',
         headers: {
@@ -343,7 +352,7 @@ function AdminHome() {
 
   const handleRejectSubmit = async (doctorId) => {
     try {
-      const url = `http://localhost:8080/approval?userId=${doctorId}&approvalStatus=${reject}`;
+      const url = `https://railway-backend-production-a8c8.up.railway.app/approval?userId=${doctorId}&approvalStatus=${reject}`;
       const response = await fetch(url, {
         method: 'POST',
         headers: {
@@ -371,18 +380,18 @@ function AdminHome() {
   //Delete user
   const handleDeleteUser = async () => {
     const userId = selectedProfile === 'patients'
-    ? currentPatient.patientId
-    : selectedProfile === 'doctors'
+      ? currentPatient.patientId
+      : selectedProfile === 'doctors'
         ? currentDoctor.doctorId
         : '';
     try {
-      const response = await fetch(`http://localhost:8080/${selectedProfile}?userId=${userId}`, {
+      const response = await fetch(`https://railway-backend-production-a8c8.up.railway.app/${selectedProfile}?userId=${userId}`, {
         method: 'DELETE',
         headers: {
           'Content-Type': 'application/json',
         },
       });
-  
+
       if (response.ok) {
         console.log('User deleted successfully');
         window.location.reload();
@@ -441,195 +450,216 @@ function AdminHome() {
 
   const renderDoctorDetailsPopup = () => (
     <Popup trigger={isPopupVisible}>
-            <form action="#" id="signin-form">
-              <div>
-                <h1 style={{float: "left", marginRight: "225px"}}>Doctor Details</h1>
-                <h1 style={{float: "right", fontSize: "25px", color: "gray", cursor: "pointer"}} onClick={closePopup}>x</h1>
+      {isDeleteAccountVisible && (
+        <Popup trigger={isDeleteAccountVisible}>
+          <div style={{ textAlign: "center", marginBottom: "10px", fontSize: "20px", zIndex: -1 }}><b>Are you sure you want to delete your account?</b></div>
+
+          <button onClick={handleDeleteUser} style={{ padding: 5, borderRadius: 0, width: "48.5%", textAlign: "center", marginTop: "10px", height: "40px", marginRight: "10px", backgroundColor: "#b22222" }} >Delete Account</button>
+          <button className='cancel' onClick={closeDeleteAccount} style={{ padding: 5, borderRadius: 0, width: "48.5%", textAlign: "center", marginTop: "10px", height: "40px" }}>Cancel</button>
+        </Popup>
+      )}
+      <form action="#" id="signin-form">
+        <div>
+          <h1 style={{ float: "left", marginRight: "225px" }}>Doctor Details</h1>
+          <h1 style={{ float: "right", fontSize: "25px", color: "gray", cursor: "pointer" }} onClick={closePopup}>x</h1>
+        </div>
+        <div className="infield" style={{ overflowY: 'auto', overflowX: 'hidden', maxHeight: '500px' }}>
+          <div style={{ display: "flex", flexDirection: "row", alignItems: "center" }}>
+            {selectedAvatar && (
+              <img
+                src={selectedAvatar}
+                alt="Selected Avatar"
+                style={{ width: "120px", marginRight: "20px" }}
+              />
+            )}
+
+            <div style={{ display: "flex", flexDirection: "column" }}>
+              <div style={{ marginBottom: "10px" }}>
+                <h3>Doctor Name</h3>
+                <input
+                  type="text"
+                  name="docName"
+                  placeholder="Doctor Name"
+                  style={{ width: "16vw", marginBottom: "0px", borderRadius: "10px" }}
+                  value={`${currentDoctor.firstName} ${currentDoctor.lastName}`}
+                  readOnly
+                />
               </div>
-              <div className="infield" style={{overflowY: 'auto', maxHeight: '500px' }}>
-              <div style={{ display: "flex", flexDirection: "row", alignItems: "center" }}>
-                    {selectedAvatar && (
-                      <img
-                        src={selectedAvatar}
-                        alt="Selected Avatar"
-                        style={{ width: "120px", marginRight: "20px" }}
-                      />
-                    )}
 
-                    <div style={{ display: "flex", flexDirection: "column" }}>
-                      <div style={{ marginBottom: "10px" }}>
-                        <h3>Doctor Name</h3>
-                        <input
-                          type="text"
-                          name="docName"
-                          placeholder="Doctor Name"
-                          style={{ width: "400px", marginBottom: "0px" }}
-                          value={`${currentDoctor.firstName} ${currentDoctor.lastName}`}
-                          readOnly
-                        />
-                      </div>
+              <div>
+                <h3>PRC ID</h3>
+                <input
+                  type="text"
+                  name="prcId"
+                  placeholder="PRC ID"
+                  style={{ width: "16vw", marginBottom: "0px", borderRadius: "10px" }}
+                  value={currentDoctor.prcId}
+                  readOnly
+                />
+              </div>
+            </div>
+          </div>
 
-                      <div>
-                        <h3>PRC ID</h3>
-                        <input
-                          type="text"
-                          name="prcId"
-                          placeholder="PRC ID"
-                          style={{ width: "100%", marginBottom: "0px" }}
-                          value={currentDoctor.prcId}
-                          readOnly
-                        />
-                      </div>
-                    </div>
-                  </div>
-                
-                  <div style={{ display: "flex", flexDirection: "column", marginTop: "10px" }}>
-                    <div style={{ display: "flex", flexDirection: "row" }}>
-                        <div style={{ display: "flex", flexDirection: "column", marginRight: "20px" }}>
-                          <h3>Doctor Credentials</h3>
-                          <input type="text" name="credentials" placeholder="Doctor Credentials" style={{width: "225px"}} value={currentDoctor.credentials} readOnly></input>
-                        </div>
-                        <div style={{ display: "flex", flexDirection: "column" }}>
-                          <h3>Specialization</h3>
-                          <input type="text" name="specialization" placeholder="Specialization" style={{width: "230px"}} value={currentDoctor.specialization} readOnly></input>
-                      </div>
-                    </div>
-                  </div>
+          <div style={{ display: "flex", flexDirection: "column", marginTop: "10px" }}>
+            <div style={{ display: "flex", flexDirection: "row" }}>
+              <div style={{ display: "flex", flexDirection: "column", marginRight: "20px" }}>
+                <h3>Doctor Credentials</h3>
+                <input type="text" name="credentials" placeholder="Doctor Credentials" style={{ width: "11vw", borderRadius: "10px" }} value={currentDoctor.credentials} readOnly></input>
+              </div>
+              <div style={{ display: "flex", flexDirection: "column" }}>
+                <h3>Specialization</h3>
+                <input type="text" name="specialization" placeholder="Specialization" style={{ width: "11vw", borderRadius: "10px" }} value={currentDoctor.specialization} readOnly></input>
+              </div>
+            </div>
+          </div>
 
-                  <div style={{ display: "flex", flexDirection: "column", marginTop: "10px" }}>
-                    <div style={{ display: "flex", flexDirection: "row" }}>
-                        <div style={{ display: "flex", flexDirection: "column", marginRight: "20px" }}>
-                        <h3>Email Address</h3>
-                  <input type="text" name="emailAddress" placeholder="Email Address" style={{width: "225px"}} value={currentDoctor.email} readOnly></input>
-                        </div>
-                        <div style={{ display: "flex", flexDirection: "column" }}>
-                        <h3>Contact Number</h3>
-                  <input type="text" name="contactNumber" placeholder="Contact Number" style={{width: "230px"}} value={currentDoctor.contactNumber} readOnly></input>
-                      </div>
-                    </div>
-                  </div>
-             
-                <br></br>
-                {uniqueClinics.map((clinic, index) => (
-                <ul key={clinic.clinicId}>
-                  <div>
-                    <h2>{`Clinic ${String(index + 1).padStart(2, '0')}`}</h2>
-                  </div>
-                  <div>
-                    <h3>Clinic or Hospital Affiliation</h3>
-                    <input
-                      type="text"
-                      name="clinicName"
-                      placeholder="Clinic or Hospital Affiliation"
-                      value={clinic.clinicName}
-                      readOnly
-                    ></input>
-                  </div>
-                  <div>
-                    <h3>Clinic Address</h3>
-                    <input
-                      type="text"
-                      name="clinicSched"
-                      placeholder="Clinic Schedule"
-                      value={clinic.clinicAddress}
-                      readOnly
-                    ></input>
-                  </div>
-                  <div>
-                    <h3>Clinic Schedule</h3>
-                    <input
-                      type="text"
-                      name="clinicSched"
-                      placeholder="Clinic Schedule"
-                      value={clinic.scheduleDays}
-                      readOnly
-                    ></input>
-                  </div>
-                  <br></br>
-                </ul>
-              ))}
+          <div style={{ display: "flex", flexDirection: "column", marginTop: "10px" }}>
+            <div style={{ display: "flex", flexDirection: "row" }}>
+              <div style={{ display: "flex", flexDirection: "column", marginRight: "20px" }}>
+                <h3>Email Address</h3>
+                <input type="text" name="emailAddress" placeholder="Email Address" style={{ width: "11vw", borderRadius: "10px" }} value={currentDoctor.email} readOnly></input>
+              </div>
+              <div style={{ display: "flex", flexDirection: "column" }}>
+                <h3>Contact Number</h3>
+                <input type="text" name="contactNumber" placeholder="Contact Number" style={{ width: "11vw", borderRadius: "10px" }} value={currentDoctor.contactNumber} readOnly></input>
+              </div>
+            </div>
+          </div>
 
-                {currentDoctor.approvalStatus === "Verified by Admin" ? (
-                  <button
-                    type="button"
-                    style={{
-                      padding: 5,
-                      borderRadius: 0,
-                      width: "100%",
-                      textAlign: "center",
-                      marginTop: "10px",
-                      height: "40px",
-                      marginRight: "10px",
-                      backgroundColor: "#b22222"
-                    }}
-                    onClick={handleDeleteUser}>
-                      Delete Account
-                </button>
-                ) : (
-                  <React.Fragment>
-                    <button
-                      type='button'
-                      style={{
-                        padding: 5,
-                        borderRadius: 0,
-                        width: "48.8%", // Adjust width as needed
-                        textAlign: "center",
-                        marginTop: "20px",
-                        height: "40px",
-                        marginRight: "10px",
-                      }}
-                      onClick={() => {
-                        handleApprovalSubmit(currentDoctor.doctorId);
-                        window.scrollTo({
-                          top: document.body.scrollHeight,
-                          behavior: 'smooth',
-                        });
-                      }}
-                    >
-                      Approve Profile
-                    </button>
-                    <button
-                      type='button'
-                      className='cancel'
-                      style={{
-                        padding: 5,
-                        borderRadius: 0,
-                        width: "48.9%", // Adjust width as needed
-                        textAlign: "center",
-                        marginTop: "20px",
-                        height: "40px",
-                      }}
-                      onClick={() => {
-                        handleRejectSubmit(currentDoctor.doctorId);
-                        window.scrollTo({
-                          top: document.body.scrollHeight,
-                          behavior: 'smooth',
-                        });
-                      }}
-                    >
-                      Reject Profile
-                    </button>
-                  </React.Fragment>
-                )}
-                <h4>{result}</h4>
+          <br></br>
+          {uniqueClinics.map((clinic, index) => (
+            <ul key={clinic.clinicId}>
+              <div>
+                <h2>{`Clinic ${String(index + 1).padStart(2, '0')}`}</h2>
+              </div>
+              <div>
+                <h3>Clinic or Hospital Affiliation</h3>
+                <input
+                  type="text"
+                  name="clinicName"
+                  placeholder="Clinic or Hospital Affiliation"
+                  value={clinic.clinicName}
+                  readOnly
+                  style={{ width: "23vw", borderRadius: "10px" }}
+                ></input>
+              </div>
+              <div>
+                <h3>Clinic Address</h3>
+                <input
+                  type="text"
+                  name="clinicSched"
+                  placeholder="Clinic Schedule"
+                  value={clinic.clinicAddress}
+                  readOnly
+                  style={{ width: "23vw", borderRadius: "10px" }}
+                ></input>
+              </div>
+              <div>
+                <h3>Clinic Schedule</h3>
+                <input
+                  type="text"
+                  name="clinicSched"
+                  placeholder="Clinic Schedule"
+                  value={clinic.scheduleDays}
+                  readOnly
+                  style={{ width: "23vw", borderRadius: "10px" }}
 
-      </div>
+                ></input>
+              </div>
+              <br></br>
+            </ul>
+          ))}
 
-    </form>
-  </Popup>
+          {currentDoctor.approvalStatus === "Verified by Admin" ? (
+            <button
+              type="button"
+              style={{
+                padding: 5,
+                borderRadius: 0,
+                width: "23vw", 
+                textAlign: "center",
+                marginTop: "10px",
+                height: "40px",
+                marginRight: "10px",
+                backgroundColor: "#b22222",
+                borderRadius: "10px" 
+              }}
+              onClick={handleDeleteAccount}>
+              Delete Account
+            </button>
+          ) : (
+            <React.Fragment>
+              <button
+                type='button'
+                style={{
+                  padding: 5,
+                  borderRadius: 0,
+                  width: "48.8%", // Adjust width as needed
+                  textAlign: "center",
+                  marginTop: "20px",
+                  height: "40px",
+                  marginRight: "10px",
+                }}
+                onClick={() => {
+                  handleApprovalSubmit(currentDoctor.doctorId);
+                  window.scrollTo({
+                    top: document.body.scrollHeight,
+                    behavior: 'smooth',
+                  });
+                }}
+              >
+                Approve Profile
+              </button>
+              <button
+                type='button'
+                className='cancel'
+                style={{
+                  padding: 5,
+                  borderRadius: 0,
+                  width: "48.9%", // Adjust width as needed
+                  textAlign: "center",
+                  marginTop: "20px",
+                  height: "40px",
+                }}
+                onClick={() => {
+                  handleRejectSubmit(currentDoctor.doctorId);
+                  window.scrollTo({
+                    top: document.body.scrollHeight,
+                    behavior: 'smooth',
+                  });
+                }}
+              >
+                Reject Profile
+              </button>
+            </React.Fragment>
+          )}
+          <h4>{result}</h4>
+
+        </div>
+
+      </form>
+    </Popup>
   );
 
   const renderPatientDetailsPopup = () => (
 
     <Popup trigger={isPopupVisible}>
-    <form action="#" id="signin-form">
-      <div>
-        <h1 style={{ float: "left", marginRight: "200px" }}>Patient Details</h1>
-        <h1 style={{ float: "right", fontSize: "25px", color: "gray", cursor: "pointer" }} onClick={closePopup}>x</h1>
-      </div>
-      <div className="infield" style={{ overflowY: 'auto', maxHeight: '500px', overflowX: "hidden" }}>
-        <div style={{ display: "flex", flexDirection: "row", alignItems: "center" }}>
-          {selectedAvatar && (
+      {isDeleteAccountVisible && (
+        <Popup trigger={isDeleteAccountVisible}>
+          <div style={{ textAlign: "center", marginBottom: "10px", fontSize: "20px", zIndex: -1 }}><b>Are you sure you want to delete your account?</b></div>
+
+          <button onClick={handleDeleteUser} style={{ padding: 5, borderRadius: 10, width: "48.5%", textAlign: "center", marginTop: "10px", height: "40px", marginRight: "10px", backgroundColor: "#b22222" }} >Delete Account</button>
+          <button className='cancel' onClick={closeDeleteAccount} style={{ padding: 5, borderRadius: 10, width: "48.5%", textAlign: "center", marginTop: "10px", height: "40px" }}>Cancel</button>
+        </Popup>
+      )}
+      <form action="#" id="signin-form">
+        <div>
+          <h1 style={{ float: "left", marginRight: "200px" }}>Patient Details</h1>
+          <h1 style={{ float: "right", fontSize: "25px", color: "gray", cursor: "pointer" }} onClick={closePopup}>x</h1>
+        </div>
+        <div className="infield" style={{ overflowY: 'auto', maxHeight: '500px', overflowX: "hidden" }}>
+          <div style={{ display: "flex", flexDirection: "row", alignItems: "center" }}>
+            {selectedAvatar && (
               <img
                 src={selectedAvatar}
                 alt="Selected Avatar"
@@ -643,14 +673,14 @@ function AdminHome() {
                   type="text"
                   name="docName"
                   placeholder="Patient Name"
-                  style={{ width: "400px", marginBottom: "0px"}}
+                  style={{ width: "16vw", marginBottom: "0px" , borderRadius: "10px"}}
                   value={`${currentPatient.firstName} ${currentPatient.lastName}`}
                   readOnly
                 />
               </div>
               <div>
                 <h3>Email Address</h3>
-                 <input type="text" name="email" placeholder="Email Address" style={{ width: "100%", marginBottom: "0" }} value={currentPatient.email} readOnly></input>
+                <input type="text" name="email" placeholder="Email Address" style={{ width: "16vw", marginBottom: "0", borderRadius: "10px" }} value={currentPatient.email} readOnly></input>
               </div>
             </div>
           </div>
@@ -659,11 +689,11 @@ function AdminHome() {
             <div style={{ display: "flex", flexDirection: "row" }}>
               <div style={{ display: "flex", flexDirection: "column", marginRight: "20px" }}>
                 <h3>Contact Number</h3>
-                <input type="text" name="contactNumber" placeholder="Contact Number" style={{width: "225px"}}  value={currentPatient.contactNumber} readOnly></input>
+                <input type="text" name="contactNumber" placeholder="Contact Number" style={{ width: "11vw", borderRadius: "10px"  }} value={currentPatient.contactNumber} readOnly></input>
               </div>
               <div style={{ display: "flex", flexDirection: "column" }}>
                 <h3>Birthday</h3>
-                <input type="text" name="birthday" placeholder="Birthday" style={{width: "230px"}}  value={currentPatient.birthday} readOnly></input>
+                <input type="text" name="birthday" placeholder="Birthday" style={{ width: "11vw", borderRadius: "10px"  }} value={currentPatient.birthday} readOnly></input>
               </div>
             </div>
           </div>
@@ -672,55 +702,55 @@ function AdminHome() {
             <div style={{ display: "flex", flexDirection: "row" }}>
               <div style={{ display: "flex", flexDirection: "column", marginRight: "20px" }}>
                 <h3>Sex</h3>
-                <input type="text" name="sex" placeholder="Sex" style={{ width: "225px" }} value={currentPatient.sex} readOnly></input>
+                <input type="text" name="sex" placeholder="Sex" style={{ width: "11vw", borderRadius: "10px"  }} value={currentPatient.sex} readOnly></input>
               </div>
               <div style={{ display: "flex", flexDirection: "column" }}>
                 <h3>Philhealth Id</h3>
-                <input type="text" name="philhealthId" placeholder="Philhealth Id" style={{ width: "230px"}} value={currentPatient.philhealthId} readOnly></input>
+                <input type="text" name="philhealthId" placeholder="Philhealth Id" style={{ width: "11vw", borderRadius: "10px"  }} value={currentPatient.philhealthId} readOnly></input>
               </div>
             </div>
           </div>
-        
+
           <div style={{ display: "flex", flexDirection: "column", marginTop: "10px" }}>
             <div style={{ display: "flex", flexDirection: "row" }}>
               <div style={{ display: "flex", flexDirection: "column", marginRight: "20px" }}>
                 <h3>Senior Id</h3>
-                <input type="text" name="seniorId" placeholder="Senior Id" style={{ width: "225px" }} value={currentPatient.seniorId} readOnly></input>
+                <input type="text" name="seniorId" placeholder="Senior Id" style={{ width: "11vw", borderRadius: "10px"  }} value={currentPatient.seniorId} readOnly></input>
               </div>
               <div style={{ display: "flex", flexDirection: "column" }}>
                 <h3>PWD Id</h3>
-                <input type="text" name="pwdId" placeholder="PWD Id" style={{ width: "230px"  }} value={currentPatient.pwdId} readOnly></input>
+                <input type="text" name="pwdId" placeholder="PWD Id" style={{ width: "11vw", borderRadius: "10px"  }} value={currentPatient.pwdId} readOnly></input>
               </div>
             </div>
           </div>
 
-        <div>
-          <h3>HMO</h3>
-          <input type="text" name="hmo" placeholder="HMO" value={currentPatient.hmo} readOnly></input>
-        </div>
-        
-        <div>
-        <button
-          type="button"
-          style={{
-            padding: 5,
-            borderRadius: 0,
-            width: "100%",
-            textAlign: "center",
-            marginTop: "10px",
-            height: "40px",
-            marginRight: "10px",
-            backgroundColor: "#b22222"
-          }}
-          onClick={handleDeleteUser}
-        >
-          Delete Account
-        </button>
-        </div>
-      </div>
+          <div>
+            <h3>HMO</h3>
+            <input type="text" name="hmo" placeholder="HMO"  style={{ width: "23vw", borderRadius: "10px"  }} value={currentPatient.hmo} readOnly></input>
+          </div>
 
-    </form>
-  </Popup>
+          <div>
+            <button
+              type="button"
+              style={{
+                padding: 5,
+                borderRadius: 10,
+                width: "23vw",
+                textAlign: "center",
+                marginTop: "10px",
+                height: "40px",
+                marginRight: "10px",
+                backgroundColor: "#b22222"
+              }}
+              onClick={handleDeleteAccount}
+            >
+              Delete Account
+            </button>
+          </div>
+        </div>
+
+      </form>
+    </Popup>
   );
 
   return (
@@ -743,99 +773,102 @@ function AdminHome() {
           </ul>
         </nav>
       </div>
-      <div style={{ display: "block", width: "100%", marginTop: "2%", maxHeight: "88vh", overflowY: "auto" }}>
-      <div style={{ textAlign: 'center', margin: '20px 0' }}>
-        <br />
-        <button
-          onClick={() => handleProfileToggle('doctors')}
-          className={`button-transition`}
-          style={{
-            padding: '10px 20px',
-            marginLeft: '15px',
-            background: selectedProfile === 'doctors' ? '#3498db' : '#fff',
-            color: selectedProfile === 'doctors' ? '#fff' : '#333',
-            border: '1px solid #3498db',
-            borderRadius: '2px',
-            cursor: 'pointer',
-            width: '41vw'
-          }}
-        >
-          Doctor Profiles
-        </button>
-        <button
-          onClick={() => handleProfileToggle('patients')}
-          className={`button-transition`}
-          style={{
-            padding: '10px 20px',
-            background: selectedProfile === 'patients' ? '#3498db' : '#fff',
-            color: selectedProfile === 'patients' ? '#fff' : '#333',
-            border: '1px solid #3498db',
-            borderRadius: '2px',
-            cursor: 'pointer',
-            width: '41vw'
-          }}
-        >
-          Patient Profiles
-        </button>
-      </div>
 
-         
-      <div className="doctor-grid" style={{ marginLeft: "7%", marginRight: "3%" }}>
-        {selectedProfile === 'doctors' ? (
-          <div className="doctor-grid" style={{ marginRight: "3.5%" }}>
-          <div >
-            <div className="verified-accounts">
-          <h2>Verified Accounts</h2>
-          <div style={{ display: "flex", flexDirection: "row", alignItems: "center" }}>
-          {doctors
-              .filter((doctor) => doctor.approvalStatus === 'Verified by Admin' && doctor.deletionStatus === null)
-              .map((verifiedDoctor, index) => (
-                <DoctorForApproval
-                  key={index}
-                  doctor={verifiedDoctor}
-                  onReview={() => handleReview(verifiedDoctor.doctorId)}
-                />
-              ))}
-          </div>
-            
-          </div>
-          <div className="unverified-accounts">
-            <h2>Unverified Accounts</h2>
-            <div style={{ display: "flex", flexDirection: "row", alignItems: "center" }}>
-            {doctors
-              .filter((doctor) => doctor.approvalStatus !== 'Verified by Admin' && doctor.deletionStatus === null)
-              .map((unverifiedDoctor, index) => (
-                <DoctorForApproval
-                  key={index}
-                  doctor={unverifiedDoctor}
-                  onReview={() => handleReview(unverifiedDoctor.doctorId)}
-                />
-              ))}
+      <div style={{ display: "block", width: "100%", marginTop: "2%", maxHeight: "88vh", overflowY: "auto"}}>
+        <div style={{ textAlign: 'center', margin: '20px 0' }}>
+          <br />
+          <button
+            onClick={() => handleProfileToggle('doctors')}
+            className={`button-transition`}
+            style={{
+              padding: '10px 20px',
+              marginLeft: '15px',
+              background: selectedProfile === 'doctors' ? '#3498db' : '#fff',
+              color: selectedProfile === 'doctors' ? '#fff' : '#333',
+              border: '1px solid #3498db',
+              borderRadius: '2px',
+              cursor: 'pointer',
+              width: '41vw',
+              overflowX: "hidden" 
+            }}
+          >
+            Doctor Profiles
+          </button>
+          <button
+            onClick={() => handleProfileToggle('patients')}
+            className={`button-transition`}
+            style={{
+              padding: '10px 20px',
+              background: selectedProfile === 'patients' ? '#3498db' : '#fff',
+              color: selectedProfile === 'patients' ? '#fff' : '#333',
+              border: '1px solid #3498db',
+              borderRadius: '2px',
+              cursor: 'pointer',
+              width: '41vw',
+              overflowX: "hidden" 
+            }}
+          >
+            Patient Profiles
+          </button>
+        </div>
+
+
+        <div className="doctor-grid" style={{ marginLeft: "7%", marginRight: "3%" }}>
+          {selectedProfile === 'doctors' ? (
+            <div className="doctor-grid" style={{ marginRight: "3.5%" }}>
+              <div >
+                <div className="verified-accounts">
+                  <h2>Verified Accounts</h2>
+                  <div style={{ display: "flex", flexDirection: "row", alignItems: "center"}}>
+                    {doctors
+                      .filter((doctor) => doctor.approvalStatus === 'Verified by Admin' && doctor.deletionStatus === null)
+                      .map((verifiedDoctor, index) => (
+                        <DoctorForApproval
+                          key={index}
+                          doctor={verifiedDoctor}
+                          onReview={() => handleReview(verifiedDoctor.doctorId)}
+                        />
+                      ))}
+                  </div>
+
+                </div>
+                <div className="unverified-accounts">
+                  <h2>Unverified Accounts</h2>
+                  <div style={{ display: "flex", flexDirection: "row", alignItems: "center" }}>
+                    {doctors
+                      .filter((doctor) => doctor.approvalStatus !== 'Verified by Admin' && doctor.deletionStatus === null)
+                      .map((unverifiedDoctor, index) => (
+                        <DoctorForApproval
+                          key={index}
+                          doctor={unverifiedDoctor}
+                          onReview={() => handleReview(unverifiedDoctor.doctorId)}
+                        />
+                      ))}
+                  </div>
+                </div>
               </div>
-          </div>
-        </div>        
-      </div>
-        ) : (
-          // Render patient profiles
-          patients
-            .filter((patient) => patient.deletionStatus === null)
-            .map((patient, index) => (
-              <PatientCards key={index} patient={patient} onReview={() => handleCheck(patient.patientId)} />
-            ))
-        )}
-      </div>
+            </div>
+          ) : (
+            // Render patient profiles
+            patients
+              .filter((patient) => patient.deletionStatus === null)
+              .map((patient, index) => (
+                <PatientCards key={index} patient={patient} onReview={() => handleCheck(patient.patientId)} />
+              ))
+          )}
+        </div>
       </div>
       <div style={{ bottom: "0", position: "fixed" }}>
-        
+
         <HomeFooter />
       </div>
 
       {/* Popup */}
-     
+
       <div>
-    {selectedProfile === 'doctors' ? renderDoctorDetailsPopup() : null}
-    {selectedProfile === 'patients' ? renderPatientDetailsPopup() : null}
-  </div>
+        {selectedProfile === 'doctors' ? renderDoctorDetailsPopup() : null}
+        {selectedProfile === 'patients' ? renderPatientDetailsPopup() : null}
+      </div>
     </div>
   );
 };
