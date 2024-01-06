@@ -47,7 +47,7 @@ const ClinicCard = ({ clinic, onEdit }) => {
       )}
       <div className="doctor-info">
 
-        <div className="dinfo" style={{ height: "140px" }}>
+        <div className="dinfo" style={{ height: "160px" }}>
           <h2 style={{ lineHeight: 1, padding: '5px 10px', justifyContent: 'center', textAlign: "center" }}>{clinic.name}</h2>
           <p style={{ margin: 0, marginLeft: '6px' }}>Address: {clinic.address}</p>
           <p style={{ margin: 0, marginLeft: '6px' }}>Number: {clinic.officeNumber}</p>
