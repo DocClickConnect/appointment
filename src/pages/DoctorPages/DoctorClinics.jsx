@@ -310,6 +310,7 @@ const DoctorClinics = () => {
                 type="text"
                 name="clinic"
                 placeholder="Clinic Name"
+                style = {{borderRadius: "10px", width: "23.5vw"}}
               />
             </div>
             <div>
@@ -320,6 +321,7 @@ const DoctorClinics = () => {
                 type="text"
                 name="clinicaddress"
                 placeholder="Clinic Address"
+                style = {{borderRadius: "10px", width: "23.5vw"}}
               />
             </div>
 
@@ -331,6 +333,7 @@ const DoctorClinics = () => {
                 type="text"
                 name="clinic"
                 placeholder="09991234567"
+                style = {{borderRadius: "10px", width: "23.5vw"}}
               />
             </div>
             <div>
@@ -341,6 +344,7 @@ const DoctorClinics = () => {
                 type="text"
                 name="clinic"
                 placeholder="clinic@gmail.com"
+                style = {{borderRadius: "10px", width: "23.5vw"}}
               />
             </div>
 
@@ -352,6 +356,7 @@ const DoctorClinics = () => {
                 type="text"
                 name="clinic"
                 placeholder="Hospital Affiliation"
+                style = {{borderRadius: "10px", width: "23.5vw"}}
               />
             </div>
 
@@ -368,7 +373,8 @@ const DoctorClinics = () => {
                           type="text"
                           placeholder={schedule.scheduleDay}
                           onChange={(e) => handleDayChange(index, e.target.value)}
-                          style={{ width: "255px" }}
+                          style={{ width: "11.2vw", borderRadius: "10px", }}
+
                         />
                       </div>
                       <div style={{ display: "flex", flexDirection: "column" }}>
@@ -377,7 +383,7 @@ const DoctorClinics = () => {
                           type="text"
                           placeholder={schedule.slots}
                           onChange={(e) => handleSlotsChange(index, e.target.value)}
-                          style={{ width: "255px" }}
+                          style={{ width: "11.2vw", borderRadius: "10px", }}
                         />
                       </div>
                     </div>
@@ -390,7 +396,7 @@ const DoctorClinics = () => {
                           type="text"
                           placeholder={schedule.startTime}
                           onChange={(e) => handleStartTimeChange(index, e.target.value)}
-                          style={{ width: "255px" }}
+                          style={{ width: "11.2vw", borderRadius: "10px", }}
                         />
                       </div>
                       <div style={{ display: "flex", flexDirection: "column" }}>
@@ -399,19 +405,19 @@ const DoctorClinics = () => {
                           type="text"
                           placeholder={schedule.endTime}
                           onChange={(e) => handleEndTimeChange(index, e.target.value)}
-                          style={{ width: "255px" }}
+                          style={{ width: "11.2vw", borderRadius: "10px", }}
                         />
                       </div>
                     </div>
                   </div>
-                  <button onClick={() => updateSchedule(schedule.scheduleId, schedule.scheduleDay, schedule.startTime, schedule.endTime, schedule.slots)} style={{ justifyContent: 'center', padding: 5, borderRadius: 0, width: "100%", textAlign: "center", marginTop: "10px", height: "40px", marginRight: "10px" }}>
+                  <button onClick={() => updateSchedule(schedule.scheduleId, schedule.scheduleDay, schedule.startTime, schedule.endTime, schedule.slots)} style={{ justifyContent: 'center', padding: 5, borderRadius: 10, width: "23.5vw", textAlign: "center", marginTop: "10px", height: "40px", marginRight: "10px" }}>
                     Edit Clinic Schedule
                   </button>
 
                 </div>
               ))}
             </div>
-            <button onClick={toggleAddNewClinicSched} className="addSched" style={{ justifyContent: 'center', padding: 5, borderRadius: 0, width: "100%", textAlign: "center", marginTop: "15px", height: "40px", marginRight: "10px" }}>
+            <button onClick={toggleAddNewClinicSched} className="addSched" style={{ justifyContent: 'center', padding: 5, borderRadius: 10, width: "23.5vw", textAlign: "center", marginTop: "15px", height: "40px", marginRight: "10px" }}>
               Add New Clinic Schedule
             </button>
             {showAddNewClinicSched && (
@@ -426,8 +432,8 @@ const DoctorClinics = () => {
                         type="text"
                         placeholder="Monday"
                         onChange={(e) => setScheduleDay(e.target.value)}
-                        style={{ width: "255px" }}
-                      />
+                        style={{ width: "11.2vw", borderRadius: "10px", }}
+                        />
                     </div>
                     <div style={{ display: "flex", flexDirection: "column" }}>
                       <h5>Slots</h5>
@@ -435,8 +441,8 @@ const DoctorClinics = () => {
                         type="text"
                         placeholder="10"
                         onChange={(e) => setSlots(e.target.value)}
-                        style={{ width: "255px" }}
-                      />
+                        style={{ width: "11.2vw", borderRadius: "10px", }}
+                        />
                     </div>
                   </div>
                 </div>
@@ -448,8 +454,8 @@ const DoctorClinics = () => {
                         type="text"
                         placeholder="09:00:00"
                         onChange={(e) => setStartTime(e.target.value)}
-                        style={{ width: "255px" }}
-                      />
+                        style={{ width: "11.2vw", borderRadius: "10px", }}
+                        />
                     </div>
                     <div style={{ display: "flex", flexDirection: "column" }}>
                       <h5>End Time</h5>
@@ -457,20 +463,20 @@ const DoctorClinics = () => {
                         type="text"
                         placeholder="12:00:00"
                         onChange={(e) => setEndTime(e.target.value)}
-                        style={{ width: "255px" }}
-                      />
+                        style={{ width: "11.2vw", borderRadius: "10px", }}
+                        />
                     </div>
                   </div>
                 </div>
-                <button onClick={() => addSchedule()} style={{ justifyContent: 'center', padding: 5, borderRadius: 0, width: "100%", textAlign: "center", marginTop: "10px", height: "40px", marginRight: "10px" }}>
+                <button onClick={() => addSchedule()} style={{ justifyContent: 'center', padding: 5, borderRadius: 10, width: "23.5vw", textAlign: "center", marginTop: "10px", height: "40px", marginRight: "10px" }}>
                   Save Clinic Schedule
                 </button>
 
               </div>
             )}
 
-            <button style={{ padding: 5, borderRadius: 0, width: "48.7%", textAlign: "center", marginTop: "15px", height: "40px", marginRight: "10px" }} onClick={handleSubmit}>Submit Changes</button>
-            <button className='cancel' onClick={closePopup} style={{ padding: 5, borderRadius: 0, width: "49%", textAlign: "center", marginTop: "15px", height: "40px" }}>Discard Changes</button>
+            <button style={{ padding: 5, borderRadius: 10, width: "11.5vw", textAlign: "center", marginTop: "15px", height: "40px", marginRight: "10px" }} onClick={handleSubmit}>Submit Changes</button>
+            <button className='cancel' onClick={closePopup} style={{ padding: 5, borderRadius: 10, width: "11.5vw", textAlign: "center", marginTop: "15px", height: "40px" }}>Discard Changes</button>
           </div>
         </form>
       </Popup>
