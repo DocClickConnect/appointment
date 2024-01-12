@@ -18,7 +18,7 @@ function FAQs() {
         },
         {
           question: 'How can I search for doctors?',
-          answer: 'Once you have successfully logged in, click on the "Search Doctors" button to input the name, specialty, clinic, or clinic schedule of the doctor you are looking for. Browse through the list of doctors that match your criteria and view their profiles to make an informed decision.',
+          answer: 'Once you have successfully logged in, click on the "Search Doctors" button to input the name, specialty, or clinic of the doctor you are looking for. Browse through the list of doctors that match your criteria and view their profiles to make an informed decision.',
           open: false
         },
         {
@@ -46,11 +46,6 @@ function FAQs() {
             answer: 'Doctors can only view your profile once you have scheduled an appointment with them. Aside from your basic information and contact details, doctors can also see your health insurance information, senior citizen ID, and PWD ID if available.',
             open: false
         },
-        {
-            question: 'Can doctors set an appointment on my behalf?',
-            answer: 'Doctors can log in to their dedicated portal, where they can manage their registered clinics and set appointments for new patients and patients for follow-up consultations.',
-            open: false
-        }
       ]);
     
       const toggleFAQ = index => {
