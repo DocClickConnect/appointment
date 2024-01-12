@@ -694,11 +694,11 @@ function AdminHome() {
             <div style={{ display: "flex", flexDirection: "row" }}>
               <div style={{ display: "flex", flexDirection: "column", marginRight: "20px" }}>
                 <h3>Contact Number</h3>
-                <input type="text" name="contactNumber" placeholder="Contact Number" style={{ width: "15vw", borderRadius: "10px"  }} value={currentPatient.contactNumber} readOnly></input>
+                <input type="text" name="contactNumber" placeholder="Contact Number" style={{ width: "15.5vw", borderRadius: "10px"  }} value={currentPatient.contactNumber} readOnly></input>
               </div>
               <div style={{ display: "flex", flexDirection: "column" }}>
                 <h3>Birthday</h3>
-                <input type="text" name="birthday" placeholder="Birthday" style={{ width: "15vw", borderRadius: "10px"  }} value={currentPatient.birthday} readOnly></input>
+                <input type="text" name="birthday" placeholder="Birthday" style={{ width: "15.5vw", borderRadius: "10px"  }} value={currentPatient.birthday} readOnly></input>
               </div>
             </div>
           </div>
@@ -707,11 +707,11 @@ function AdminHome() {
             <div style={{ display: "flex", flexDirection: "row" }}>
               <div style={{ display: "flex", flexDirection: "column", marginRight: "20px" }}>
                 <h3>Sex</h3>
-                <input type="text" name="sex" placeholder="Sex" style={{ width: "15vw", borderRadius: "10px"  }} value={currentPatient.sex} readOnly></input>
+                <input type="text" name="sex" placeholder="Sex" style={{ width: "15.5vw", borderRadius: "10px"  }} value={currentPatient.sex} readOnly></input>
               </div>
               <div style={{ display: "flex", flexDirection: "column" }}>
                 <h3>Philhealth Id</h3>
-                <input type="text" name="philhealthId" placeholder="Philhealth Id" style={{ width: "15vw", borderRadius: "10px"  }} value={currentPatient.philhealthId} readOnly></input>
+                <input type="text" name="philhealthId" placeholder="Philhealth Id" style={{ width: "15.5vw", borderRadius: "10px"  }} value={currentPatient.philhealthId} readOnly></input>
               </div>
             </div>
           </div>
@@ -720,18 +720,18 @@ function AdminHome() {
             <div style={{ display: "flex", flexDirection: "row" }}>
               <div style={{ display: "flex", flexDirection: "column", marginRight: "20px" }}>
                 <h3>Senior Id</h3>
-                <input type="text" name="seniorId" placeholder="Senior Id" style={{ width: "15vw", borderRadius: "10px"  }} value={currentPatient.seniorId} readOnly></input>
+                <input type="text" name="seniorId" placeholder="Senior Id" style={{ width: "15.5vw", borderRadius: "10px"  }} value={currentPatient.seniorId} readOnly></input>
               </div>
               <div style={{ display: "flex", flexDirection: "column" }}>
                 <h3>PWD Id</h3>
-                <input type="text" name="pwdId" placeholder="PWD Id" style={{ width: "15vw", borderRadius: "10px"  }} value={currentPatient.pwdId} readOnly></input>
+                <input type="text" name="pwdId" placeholder="PWD Id" style={{ width: "15.5vw", borderRadius: "10px"  }} value={currentPatient.pwdId} readOnly></input>
               </div>
             </div>
           </div>
 
           <div>
             <h3>HMO</h3>
-            <input type="text" name="hmo" placeholder="HMO"  style={{ width: "35vw", borderRadius: "10px"  }} value={currentPatient.hmo} readOnly></input>
+            <input type="text" name="hmo" placeholder="HMO"  style={{ width: "30vw", borderRadius: "10px"  }} value={currentPatient.hmo} readOnly></input>
           </div>
 
           <div>
@@ -740,7 +740,7 @@ function AdminHome() {
               style={{
                 padding: 5,
                 borderRadius: 10,
-                width: "35vw",
+                width: "30vw",
                 textAlign: "center",
                 marginTop: "10px",
                 height: "40px",
