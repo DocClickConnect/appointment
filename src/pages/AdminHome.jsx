@@ -482,7 +482,7 @@ function AdminHome() {
                   type="text"
                   name="docName"
                   placeholder="Doctor Name"
-                  style={{ width: "40vw", marginBottom: "0px", borderRadius: "10px" }}
+                  style={{ width: "35vw", marginBottom: "0px", borderRadius: "10px" }}
                   value={`${currentDoctor.firstName} ${currentDoctor.lastName}`}
                   readOnly
                 />
@@ -494,7 +494,7 @@ function AdminHome() {
                   type="text"
                   name="prcId"
                   placeholder="PRC ID"
-                  style={{ width: "40vw", marginBottom: "0px", borderRadius: "10px" }}
+                  style={{ width: "35vw", marginBottom: "0px", borderRadius: "10px" }}
                   value={currentDoctor.prcId}
                   readOnly
                 />
@@ -506,11 +506,11 @@ function AdminHome() {
             <div style={{ display: "flex", flexDirection: "row" }}>
               <div style={{ display: "flex", flexDirection: "column", marginRight: "1rem" }}>
                 <h3>Doctor Credentials</h3>
-                <input type="text" name="credentials" placeholder="Doctor Credentials" style={{ width: "18vw", borderRadius: "10px" }} value={currentDoctor.credentials} readOnly></input>
+                <input type="text" name="credentials" placeholder="Doctor Credentials" style={{ width: "17vw", borderRadius: "10px" }} value={currentDoctor.credentials} readOnly></input>
               </div>
               <div style={{ display: "flex", flexDirection: "column" }}>
                 <h3>Specialization</h3>
-                <input type="text" name="specialization" placeholder="Specialization" style={{ width: "18vw", borderRadius: "10px" }} value={currentDoctor.specialization} readOnly></input>
+                <input type="text" name="specialization" placeholder="Specialization" style={{ width: "17vw", borderRadius: "10px" }} value={currentDoctor.specialization} readOnly></input>
               </div>
             </div>
           </div>
@@ -519,11 +519,11 @@ function AdminHome() {
             <div style={{ display: "flex", flexDirection: "row" }}>
               <div style={{ display: "flex", flexDirection: "column", marginRight: "1rem" }}>
                 <h3>Email Address</h3>
-                <input type="text" name="emailAddress" placeholder="Email Address" style={{ width: "18vw", borderRadius: "10px" }} value={currentDoctor.email} readOnly></input>
+                <input type="text" name="emailAddress" placeholder="Email Address" style={{ width: "17vw", borderRadius: "10px" }} value={currentDoctor.email} readOnly></input>
               </div>
               <div style={{ display: "flex", flexDirection: "column" }}>
                 <h3>Contact Number</h3>
-                <input type="text" name="contactNumber" placeholder="Contact Number" style={{ width: "18vw", borderRadius: "10px" }} value={currentDoctor.contactNumber} readOnly></input>
+                <input type="text" name="contactNumber" placeholder="Contact Number" style={{ width: "17vw", borderRadius: "10px" }} value={currentDoctor.contactNumber} readOnly></input>
               </div>
             </div>
           </div>
@@ -542,7 +542,7 @@ function AdminHome() {
                   placeholder="Clinic or Hospital Affiliation"
                   value={clinic.clinicName}
                   readOnly
-                  style={{ width: "40vw", borderRadius: "10px" }}
+                  style={{ width: "35vw", borderRadius: "10px" }}
                 ></input>
               </div>
               <div>
@@ -553,7 +553,7 @@ function AdminHome() {
                   placeholder="Clinic Schedule"
                   value={clinic.clinicAddress}
                   readOnly
-                  style={{ width: "40vw", borderRadius: "10px" }}
+                  style={{ width: "35vw", borderRadius: "10px" }}
                 ></input>
               </div>
               <div>
@@ -564,7 +564,7 @@ function AdminHome() {
                   placeholder="Clinic Schedule"
                   value={clinic.scheduleDays}
                   readOnly
-                  style={{ width: "40vw", borderRadius: "10px" }}
+                  style={{ width: "35vw", borderRadius: "10px" }}
 
                 ></input>
               </div>
@@ -578,7 +578,7 @@ function AdminHome() {
               style={{
                 padding: 5,
                 borderRadius: 0,
-                width: "40vw", 
+                width: "35vw", 
                 textAlign: "center",
                 marginTop: "10px",
                 height: "40px",
@@ -678,14 +678,14 @@ function AdminHome() {
                   type="text"
                   name="docName"
                   placeholder="Patient Name"
-                  style={{ width: "20vw", marginBottom: "0px" , borderRadius: "10px"}}
+                  style={{ width: "25vw", marginBottom: "0px" , borderRadius: "10px"}}
                   value={`${currentPatient.firstName} ${currentPatient.lastName}`}
                   readOnly
                 />
               </div>
               <div>
                 <h3>Email Address</h3>
-                <input type="text" name="email" placeholder="Email Address" style={{ width: "20vw", marginBottom: "0", borderRadius: "10px" }} value={currentPatient.email} readOnly></input>
+                <input type="text" name="email" placeholder="Email Address" style={{ width: "25vw", marginBottom: "0", borderRadius: "10px" }} value={currentPatient.email} readOnly></input>
               </div>
             </div>
           </div>
@@ -694,11 +694,11 @@ function AdminHome() {
             <div style={{ display: "flex", flexDirection: "row" }}>
               <div style={{ display: "flex", flexDirection: "column", marginRight: "20px" }}>
                 <h3>Contact Number</h3>
-                <input type="text" name="contactNumber" placeholder="Contact Number" style={{ width: "16vw", borderRadius: "10px"  }} value={currentPatient.contactNumber} readOnly></input>
+                <input type="text" name="contactNumber" placeholder="Contact Number" style={{ width: "15vw", borderRadius: "10px"  }} value={currentPatient.contactNumber} readOnly></input>
               </div>
               <div style={{ display: "flex", flexDirection: "column" }}>
                 <h3>Birthday</h3>
-                <input type="text" name="birthday" placeholder="Birthday" style={{ width: "16vw", borderRadius: "10px"  }} value={currentPatient.birthday} readOnly></input>
+                <input type="text" name="birthday" placeholder="Birthday" style={{ width: "15vw", borderRadius: "10px"  }} value={currentPatient.birthday} readOnly></input>
               </div>
             </div>
           </div>
@@ -707,11 +707,11 @@ function AdminHome() {
             <div style={{ display: "flex", flexDirection: "row" }}>
               <div style={{ display: "flex", flexDirection: "column", marginRight: "20px" }}>
                 <h3>Sex</h3>
-                <input type="text" name="sex" placeholder="Sex" style={{ width: "16vw", borderRadius: "10px"  }} value={currentPatient.sex} readOnly></input>
+                <input type="text" name="sex" placeholder="Sex" style={{ width: "15vw", borderRadius: "10px"  }} value={currentPatient.sex} readOnly></input>
               </div>
               <div style={{ display: "flex", flexDirection: "column" }}>
                 <h3>Philhealth Id</h3>
-                <input type="text" name="philhealthId" placeholder="Philhealth Id" style={{ width: "16vw", borderRadius: "10px"  }} value={currentPatient.philhealthId} readOnly></input>
+                <input type="text" name="philhealthId" placeholder="Philhealth Id" style={{ width: "15vw", borderRadius: "10px"  }} value={currentPatient.philhealthId} readOnly></input>
               </div>
             </div>
           </div>
@@ -720,18 +720,18 @@ function AdminHome() {
             <div style={{ display: "flex", flexDirection: "row" }}>
               <div style={{ display: "flex", flexDirection: "column", marginRight: "20px" }}>
                 <h3>Senior Id</h3>
-                <input type="text" name="seniorId" placeholder="Senior Id" style={{ width: "16vw", borderRadius: "10px"  }} value={currentPatient.seniorId} readOnly></input>
+                <input type="text" name="seniorId" placeholder="Senior Id" style={{ width: "15vw", borderRadius: "10px"  }} value={currentPatient.seniorId} readOnly></input>
               </div>
               <div style={{ display: "flex", flexDirection: "column" }}>
                 <h3>PWD Id</h3>
-                <input type="text" name="pwdId" placeholder="PWD Id" style={{ width: "16vw", borderRadius: "10px"  }} value={currentPatient.pwdId} readOnly></input>
+                <input type="text" name="pwdId" placeholder="PWD Id" style={{ width: "15vw", borderRadius: "10px"  }} value={currentPatient.pwdId} readOnly></input>
               </div>
             </div>
           </div>
 
           <div>
             <h3>HMO</h3>
-            <input type="text" name="hmo" placeholder="HMO"  style={{ width: "40vw", borderRadius: "10px"  }} value={currentPatient.hmo} readOnly></input>
+            <input type="text" name="hmo" placeholder="HMO"  style={{ width: "35vw", borderRadius: "10px"  }} value={currentPatient.hmo} readOnly></input>
           </div>
 
           <div>
@@ -740,7 +740,7 @@ function AdminHome() {
               style={{
                 padding: 5,
                 borderRadius: 10,
-                width: "40vw",
+                width: "35vw",
                 textAlign: "center",
                 marginTop: "10px",
                 height: "40px",
