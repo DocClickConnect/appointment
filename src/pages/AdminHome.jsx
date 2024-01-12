@@ -731,7 +731,7 @@ function AdminHome() {
 
           <div>
             <h3>HMO</h3>
-            <input type="text" name="hmo" placeholder="HMO"  style={{ width: "30vw", borderRadius: "10px"  }} value={currentPatient.hmo} readOnly></input>
+            <input type="text" name="hmo" placeholder="HMO"  style={{ width: "32.5vw", borderRadius: "10px"  }} value={currentPatient.hmo} readOnly></input>
           </div>
 
           <div>
@@ -740,7 +740,7 @@ function AdminHome() {
               style={{
                 padding: 5,
                 borderRadius: 10,
-                width: "30vw",
+                width: "32.5vw",
                 textAlign: "center",
                 marginTop: "10px",
                 height: "40px",
