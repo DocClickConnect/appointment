@@ -482,7 +482,7 @@ function AdminHome() {
                   type="text"
                   name="docName"
                   placeholder="Doctor Name"
-                  style={{ width: "16.2vw", marginBottom: "0px", borderRadius: "10px" }}
+                  style={{ width: "20vw", marginBottom: "0px", borderRadius: "10px" }}
                   value={`${currentDoctor.firstName} ${currentDoctor.lastName}`}
                   readOnly
                 />
@@ -494,7 +494,7 @@ function AdminHome() {
                   type="text"
                   name="prcId"
                   placeholder="PRC ID"
-                  style={{ width: "16.2vw", marginBottom: "0px", borderRadius: "10px" }}
+                  style={{ width: "20vw", marginBottom: "0px", borderRadius: "10px" }}
                   value={currentDoctor.prcId}
                   readOnly
                 />
@@ -510,7 +510,7 @@ function AdminHome() {
               </div>
               <div style={{ display: "flex", flexDirection: "column" }}>
                 <h3>Specialization</h3>
-                <input type="text" name="specialization" placeholder="Specialization" style={{ width: "11.2vw", borderRadius: "10px" }} value={currentDoctor.specialization} readOnly></input>
+                <input type="text" name="specialization" placeholder="Specialization" style={{ width: "14vw", borderRadius: "10px" }} value={currentDoctor.specialization} readOnly></input>
               </div>
             </div>
           </div>
@@ -523,7 +523,7 @@ function AdminHome() {
               </div>
               <div style={{ display: "flex", flexDirection: "column" }}>
                 <h3>Contact Number</h3>
-                <input type="text" name="contactNumber" placeholder="Contact Number" style={{ width: "11.2vw", borderRadius: "10px" }} value={currentDoctor.contactNumber} readOnly></input>
+                <input type="text" name="contactNumber" placeholder="Contact Number" style={{ width: "14vw", borderRadius: "10px" }} value={currentDoctor.contactNumber} readOnly></input>
               </div>
             </div>
           </div>
@@ -542,7 +542,7 @@ function AdminHome() {
                   placeholder="Clinic or Hospital Affiliation"
                   value={clinic.clinicName}
                   readOnly
-                  style={{ width: "23.5vw", borderRadius: "10px" }}
+                  style={{ width: "30vw", borderRadius: "10px" }}
                 ></input>
               </div>
               <div>
@@ -553,7 +553,7 @@ function AdminHome() {
                   placeholder="Clinic Schedule"
                   value={clinic.clinicAddress}
                   readOnly
-                  style={{ width: "23.5vw", borderRadius: "10px" }}
+                  style={{ width: "30vw", borderRadius: "10px" }}
                 ></input>
               </div>
               <div>
@@ -564,7 +564,7 @@ function AdminHome() {
                   placeholder="Clinic Schedule"
                   value={clinic.scheduleDays}
                   readOnly
-                  style={{ width: "23.5vw", borderRadius: "10px" }}
+                  style={{ width: "30vw", borderRadius: "10px" }}
 
                 ></input>
               </div>
@@ -578,7 +578,7 @@ function AdminHome() {
               style={{
                 padding: 5,
                 borderRadius: 0,
-                width: "23.5vw", 
+                width: "30vw", 
                 textAlign: "center",
                 marginTop: "10px",
                 height: "40px",
