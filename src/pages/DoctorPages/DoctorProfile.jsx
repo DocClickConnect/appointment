@@ -43,7 +43,7 @@ const DoctorProfile = () => {
       appointmentStatus: ''
     },
   ]);
-  const [isDoctorLoggedIn, setIsDoctorLoggedIn] = useState('');
+  const [isDoctorLoggedIn, setIsDoctorLoggedIn] = useState(true);
 
   
 
