@@ -48,7 +48,7 @@ const EditDoctorProfile = () => {
   const [passwordsMatchError, setPasswordsMatchError] = useState('');
   const [editMessage, setEditMessage] = useState('');
   const [secretary, setSecretary] = useState('');
-  const [isDoctorLoggedIn, setIsDoctorLoggedIn] = useState('');
+  const [isDoctorLoggedIn, setIsDoctorLoggedIn] = useState(true);
 
   const [isChangePasswordVisible, setIsChangePasswordVisible] = useState(false);
   const [isDeleteAccountVisible, setIsDeleteAccountVisible] = useState(false);
