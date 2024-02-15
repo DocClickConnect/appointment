@@ -29,7 +29,7 @@ import HomeNavbar from '../../components/HomeNavbar';
 
 const EditPatientProfile = () => {
   const { loggedInUsername } = useParams();
-  const [isPatientLoggedIn, setIsPatientLoggedIn] = useState('');
+  const [isPatientLoggedIn, setIsPatientLoggedIn] = useState(true);
   const [userId, setUserId] = useState('');
   const [username, setUsername] = useState('');
   const [firstName, setFirstName] = useState('');
