@@ -82,7 +82,7 @@ const ViewProfile = () => {
       setDisplayedAvatars(avatar);
   
     }, [avatar]);
-    const [isDoctorLoggedIn, setIsDoctorLoggedIn] = useState('');
+    const [isDoctorLoggedIn, setIsDoctorLoggedIn] = useState(true);
 
     useEffect( () => {
       const fetchUser = async () => {
