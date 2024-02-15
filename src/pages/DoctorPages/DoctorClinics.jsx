@@ -22,7 +22,7 @@ const DoctorClinics = () => {
   const [startTime, setStartTime] = useState('');
   const [endTime, setEndTime] = useState('');
   const [slots, setSlots] = useState('');
-  const [isDoctorLoggedIn, setIsDoctorLoggedIn] = useState('');
+  const [isDoctorLoggedIn, setIsDoctorLoggedIn] = useState(true);
   const [showAddNewClinicSched, setShowAddNewClinicSched] = useState(false);
 
   const toggleAddNewClinicSched = () => {
