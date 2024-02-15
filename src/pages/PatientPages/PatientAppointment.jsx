@@ -15,7 +15,7 @@ import "../../styles/Load.css";
 
 const PatientAppointment = () => {
   const { username } = useParams();
-  const [isPatientLoggedIn, setIsPatientLoggedIn] = useState('');
+  const [isPatientLoggedIn, setIsPatientLoggedIn] = useState(true);
   const [loading, setLoading] = useState(false);
 
   const [appointments, setAppointments] = useState([
