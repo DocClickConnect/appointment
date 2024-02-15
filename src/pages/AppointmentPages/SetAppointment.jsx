@@ -21,7 +21,7 @@ const SetAppointment = () => {
   const [status] = useState("Scheduled by Patient");
   const [selectedClinicId, setSelectedClinicId] = useState('');
   const [patientUserId, setPatientUserId] = useState('');
-  const [isPatientLoggedIn, setIsPatientLoggedIn] = useState('');
+  const [isPatientLoggedIn, setIsPatientLoggedIn] = useState(true);
   const [loading, setLoading] = useState(false);
   const [schedules, setSchedules] = useState([
     {
