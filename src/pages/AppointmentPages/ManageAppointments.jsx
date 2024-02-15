@@ -371,7 +371,7 @@ const ManageAppointments = () => {
 
     return statusOrder[a.appointmentStatus] - statusOrder[b.appointmentStatus];
   });
-  const [isDoctorLoggedIn, setIsDoctorLoggedIn] = useState('');
+  const [isDoctorLoggedIn, setIsDoctorLoggedIn] = useState(true);
 
   useEffect(() => {
     const fetchUser = async () => {
