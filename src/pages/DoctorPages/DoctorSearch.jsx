@@ -9,7 +9,7 @@ import HomeNavbar from '../../components/HomeNavbar';
 
 const DoctorSearch = () => {
   const { username } = useParams();
-  const [isPatientLoggedIn, setIsPatientLoggedIn] = useState('');
+  const [isPatientLoggedIn, setIsPatientLoggedIn] = useState(true);
   const [searchQuery, setSearchQuery] = useState('');
 
 
