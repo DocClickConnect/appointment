@@ -13,7 +13,7 @@ import { useParams, Link } from 'react-router-dom';
 
 const PatientResched = () => {
   const { username, appointmentId } = useParams();
-  const [isPatientLoggedIn, setIsPatientLoggedIn] = useState('');
+  const [isPatientLoggedIn, setIsPatientLoggedIn] = useState(true);
   const [response, setResponse] = useState('');
   const [rescheduleChoice, setRescheduleChoice] = useState('');
   const [error, setError] = useState('');
