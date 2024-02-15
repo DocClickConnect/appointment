@@ -33,7 +33,7 @@ import { useParams, Link } from 'react-router-dom';
 
 const PatientProfile = () => {
     const { username } = useParams();
-    const [isPatientLoggedIn, setIsPatientLoggedIn] = useState('');
+    const [isPatientLoggedIn, setIsPatientLoggedIn] = useState(true);
     const [avatar, setAvatar] = useState('');
     const [selectedAvatar, setSelectedAvatar] = useState('');
     const [user, setUser] = useState(null);
